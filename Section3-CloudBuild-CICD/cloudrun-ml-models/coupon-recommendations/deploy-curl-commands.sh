@@ -6,7 +6,7 @@
 
 # gcloud run deploy xgboost-coupon-model --image  gcr.io/udemy-mlops/xgboost_coupon_model --region us-central1
 
-curl -X POST https://xgboost-coupon-model-ucinc65roa-uc.a.run.app/predict \
+curl -X POST https://xgboost-coupon-model-ajfedp4mfq-uc.a.run.app/predict \
 -H "Content-Type: application/json" \
 -d '{
      "destination": "No Urgent Place",

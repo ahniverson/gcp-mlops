@@ -17,7 +17,7 @@ from google.cloud import bigquery
 from datetime import datetime
 from sklearn.pipeline import make_pipeline
 storage_client = storage.Client()
-bucket = storage_client.bucket("sid-ml-ops")
+bucket = storage_client.bucket("gcp-ml-ops")
 
 def load_data(path):
     return pd.read_csv(path, sep=";")
@@ -84,7 +84,7 @@ def load_model_artifact(file_name):
 
 def write_metrics_to_bigquery(algo_name, training_time, model_metrics):
     client = bigquery.Client()
-    table_id = "udemy-mlops.ml_ops.bank_campaign_model_metrics"
+    table_id = "gcp-mlops-414802.ml_ops.bank_campaign_model_metrics"
     table = bigquery.Table(table_id)
 
     row = {"algo_name": algo_name, "training_time": training_time.strftime('%Y-%m-%d %H:%M:%S'), "model_metrics": json.dumps(model_metrics)}
@@ -96,7 +96,7 @@ def write_metrics_to_bigquery(algo_name, training_time, model_metrics):
         print("Error inserting metrics into BigQuery:", errors)
 
 def main():
-    input_data_path = "gs://sid-ml-ops/bank_campaign_data/bank-campaign-training-data.csv"
+    input_data_path = "gs://gcp-ml-ops/bank_campaign_data/bank-campaign-new-part1.csv"
     model_name = 'xgboost'
     df = load_data(input_data_path)
     categorical_cols = ['job', 'marital', 'education', 'default', 'housing', 'loan', 'contact', 'month', 'day_of_week', 'poutcome']

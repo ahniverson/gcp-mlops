@@ -1,0 +1,10 @@
+.idea
+.vscode
+.git
+.gitignore
+.dockerignore
+Dockerfile
+*.sh
+*.yml
+scripts
+Dockerfile-emul
